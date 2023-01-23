@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <title>Empleado</title>
+</head>
+
+<body>
+              </br>
+    <div class="container">
+        <div class="row">
+            </div>
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Body
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6 offset-md-3">
+               <div class="card">
+                
+                   <div class="card-body">
+                         <div class="w-100 m-auto text-center">
+                               <form>
+                                   
+                                   <h1 class="h3 mb-3 fw-normal">Ingrese  datos</h1>
+                                   <div class="container-fluid">
+     
+                                    <form  action="javascript:void(0);" method="post" onsubmit="aplicacion.Agregar()">
+                                        <div class="col-md-12 ">
+                                            <label for="inputEmail4" class="form-label">Nombres</label>
+                                            <input type="text" class="form-control" id="nombre">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="inputPassword4" class="form-label">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellido">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputAddress" class="form-label" id="genero">Genero</label>
+                                            <select class="form-select">
+                                                <option>Masculino</option>
+                                                <option>Femenino</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputAddress2" class="form-label">Fecha de Nacimiento</label>
+                                            <input type="date" class="form-control" id="F.nacimiento" placeholder="Apartment, studio, or floor">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputCity" class="form-label">Fecha de Ingreso</label>
+                                            <input type="date" class="form-control" id="F.ingreso">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="inputZip" class="form-label">Salario</label>
+                                            <input type="number" class="form-control" id="salario">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-warning mt-4">Modificar Salario</button>
+                                        </div>
+                                        <hr>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-success" >Agregar Empleado</button>
+                                            
+                                            <button type="submit" class="btn btn-primary" >Calcular Edad</button>
+                                          
+                                            <button type="button" class="btn btn-primary">Calcular Antiguedad</button>
+                                            <hr>
+
+                                            <button type="button" class="btn btn-primary">Calcular Prestaciones</button>
+                                        </div>
+                                    </form>
+                               </form>
+                           </div>
+                   </div>
+  
+               </div>
+  
+            </div>
+  
+        </div>
+  
+    </div>
+    <hr>
+    <hr>
+        <div class="row g-5">
+                <div class="card-body p-0">
+                    <h2 class="text-center">Nomina</h2>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombres</th>
+                                <th>Genero</th>
+                                <th>F.Nacimiento</th>
+                                <th>F.Ingreso</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empleados">
+                            <th><button type="submit" class="btn btn-danger">Eliminar</button></th>
+                        </tbody>
+                    </table>
+                    <br/>
+                </div>
+            
+        </div>
+      </div>  
+
+    </div>
+    <hr>
+    <hr>
+    <script>
+        var modal=new boostrap.Modal(document.getElementById('modelId'),{keyboard:false});
+        var aplicacion=new function(){
+            this.nombre=document.getElementById("nombre");
+            this.apellido=document.getElementById("apellido");
+            this.genero=document.getElementById("genero");
+            this.F_nacimiento=document.getElementById("F_nacimiento");
+            this.F_ingreso=document.getElementById("F_ingreso");
+            this.salario=document.getElementById("salario");
+            this.empleados=document.getElementById("empleados");
+            
+            this.Leer=function(){
+                var datos="";
+                datos="<td>0001</td><td>Ernesto Guaman</td><td>M</td><td>02-03-1986</td><td>02-15-2023</td>";
+                
+
+                return this.empleados.innerHTML=datos;
+            };
+            this.Agregar=function(){
+                console.log(nombre.value);
+                console.log(apellido.value);
+                console.log(genero.value);
+                console.log(F_nacimiento.value);
+                console.log(F_ingreso.value); 
+                console.log(salario.value);    
+            };
+            this.Calcular_Edad=function(){
+                console.log();
+                modal.show();
+            }
+
+        };
+        aplicacion.Leer();
+
+    </script>
+</body>
+
+<style>
+   .btn btn-success{
+      margin-right: 25px;
+   }
+    .btn btn-primary{
+        margin-right: 25px;
+    }
+    .body{
+        background-color: aquamarine;
+    }
+    .card-body{
+        background-color: darkgrey;
+    }
+    
+</style>
+</html>

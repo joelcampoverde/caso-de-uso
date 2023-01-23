@@ -1,0 +1,29 @@
+@startuml
+class Persona {
+    codigo: string 
+    nombres:string 
+}
+class Empleado{
+    fechaIngreso: Date 
+    sueldo:float 
+}
+class RepositorioEmpleado{
+    empleados:list 
+    +agregar (empleado): boolean
+    +editar (empleado):boolean
+    +eliminar (empleado):boolean
+ 
+}
+
+class CasoUsoEmpleado{
+    empleado:object
+    RepositorioEmpleado:object
+
+    void constructor()
+
+
+}
+
+Persona <│-- Empleado 
+RepositorioEmpleado *-- CasoUsoEmpleado
+@enduml
